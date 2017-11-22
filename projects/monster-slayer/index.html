@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" type="text/css" href="./css/app.css" media="screen" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper" id="app">
+      <div class="wrapper__centered">
+        <div class="wrapper__main">
+          <div class="row">
+            <div class="column small-12">
+                <div class="row collapse">
+                  <div class="column small-6">
+                    <div class="row collapse">
+                      <div class="column small-11">
+                        <div class="health-bar health-bar--player">
+                          <div
+                            class="health-bar__inner health-bar__inner--player"
+                            :style="{width: playerHealth + '%'}"
+                          >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column small-6">
+                    <div class="row collapse align-right">
+                      <div class="column small-11">
+                        <div class="health-bar">
+                          <div
+                            class="health-bar__inner"
+                            :style="{width: enemyHealth + '%'}"
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column small-6 text-center">
+                  <h2 class="heading heading--player">Player</h2>
+                </div>
+                <div class="column small-6 text-center">
+                  <h2 class="heading heading--enemy">Enemy</h2>
+                </div>
+              </div>
+              <div class="row align-center">
+                <div class="column small-3">
+                  <div v-if="!gameIsRunning">
+                    <div class="row">
+                      <div class="column">
+                        <button class="button large" @click="startGame">NEW GAME</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div class="row">
+                      <div class="column small-12">
+                        <button class="button large" @click="attack">Attack</button>
+                      </div>
+                      <div class="column small-12">
+                        <button class="button large" @click="specialAttack">Ki Blast</button>
+                      </div>
+                      <div class="column small-12">
+                        <button class="button large" @click="heal">Heal</button>
+                      </div>
+                      <div class="column small-12">
+                        <button class="button large" @click="retreat">Retreat</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div v-if="turns.length > 0">
+                <div class="row align-center">
+                  <div class="column small-8">
+                    <div class="log">
+                      <ul class="log__list">
+                        <li
+                          v-for="turn in turns"
+                          :class="{'log__player': turn.isPlayer, 'log__enemy': !turn.isPlayer}"
+                        >
+                          {{ turn.text }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/vue.js"></script>
+</html>

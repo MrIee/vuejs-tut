@@ -1,0 +1,30 @@
+// ===========================================================
+// Health Bar
+// ===========================================================
+
+.health-bar {
+  height: rem-calc(25);
+  width: 100%;
+  border: rem-calc(3) solid #000000;
+  transform: skewX(-45deg);
+
+  &--player {
+    transform: skewX(45deg);
+  }
+
+  &__inner {
+    height: 100%;
+    width: 100%;
+    background-color: hsl(120%, 100%, 45%);
+    transition: width 500ms;
+
+    &--player {
+      float: right;
+    }
+  }
+
+  &__portrait {
+    height: rem-calc(150);
+    width: rem-calc(150);
+  }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" type="text/css" href="vue.css" media="screen" />
+    <title>vue.js</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>DOM Maniplulation</h2>
+      <img v-bind:src="imgSrc" alt="vue is awesome">
+      <br>
+      <a v-bind:href="link">Google</a>
+      <!-- :href same as v-bind:href -->
+      <br>
+      <a :href="link" target="_blank">Froooogle</a>
+
+      <p>My name is {{name}}</p>
+      <p>My age * 3 is {{age * 3}}</p>
+
+      <input type="text" v-on:keypress.enter="alert" v-model="text" />
+      <p>{{text}}</p>
+      <div>
+        <button v-on:click="counter += 5">Add 5</button>
+        <!-- @click same as v-on:click -->
+        <button @click="counter += 1">Add 1</button>
+        <br>
+        <input type="number" v-bind:value="counter" size="2" disabled/>
+        <p>Set the timer below:</p>
+        <input type="number" v-model="timer" />
+      </div>
+      <p>{{output}}</p>
+      <button class="alert" @click="alert">Alert!</button>
+      <div class="squares">
+        <div
+          class="square"
+          @click="attachRed = !attachRed"
+          :class="{red: attachRed}"
+          :style="{width: pixelWidth}"
+        >
+        </div>
+        <div
+          class="square"
+          @click="attachGreen = !attachGreen"
+          :class="[color, {green: attachGreen}]"
+          :style="{width: pixelWidth}"
+        >
+        </div>
+        <div
+          class="square"
+          :class="color"
+          :style="{width: pixelWidth}"
+        >
+        </div>
+      </div>
+      <hr>
+      <label for="color">Color:</label>
+      <input type="text" id="color" v-model="color">
+      <label for="width">Width:</label>
+      <input type="number" id="width" v-model="width">px
+
+      <p>
+        <br><hr><br>
+      </p>
+
+      <h2>Conditionals</h2>
+      <p>
+        <span v-if="meeseeks === 0">Make a wish!</span>
+        <span v-else-if="meeseeks === 1">I'm Mr Meeseeks, look at me!!!</span>
+        <span v-else-if="meeseeks === 2">Mr Meeseeks, open Jerry's stupid mayonnaise jar!</span>
+        <span v-else-if="meeseeks === 3">Yessiree!</span>
+        <span v-else-if="meeseeks === 4">All done!</span>
+        <span v-else-if="meeseeks === 5">*poof*</span>
+      </p>
+
+      <p>Keep the request simple, they're not go *belch* ods</p>
+      <button @click="requestMeeseeks()">Make request</button>
+
+      <p>
+        <br><hr><br>
+      </p>
+
+      <h2>Loops</h2>
+      <ul>
+        <li v-for="(thing, i) in things" :key="thing">{{ thing }} ({{ i }})</li>
+      </ul>
+      <button @click="things.push('thing4')">Add new thing</button>
+
+      <ul>
+        <li v-for="wrestler in wrestlers">
+          <div v-for="(value, key, index) in wrestler">({{ index }}) {{ key }}: {{ value }}</div>
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="object in objects">
+          <div v-for="(value, key) in object">
+            {{ key }}
+            <template v-if="Array.isArray(value)">
+              <ol>
+                <li v-for="element in value">{{ element }}</li>
+              </ol>
+            </template>
+            <template v-else>
+              {{ value }}
+            </template>
+        </li>
+      </ul>
+
+      <span v-for="n in 10">{{ n }}</span>
+    </div>
+  </body>
+  <script src="vue.js"></script>
+</html>

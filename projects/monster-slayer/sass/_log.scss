@@ -1,0 +1,29 @@
+// ===========================================================
+// Log
+// ===========================================================
+
+.log {
+  max-height: 400px;
+  overflow-y: auto;
+  border: rem-calc(2) solid #000000;
+
+  &__list {
+    @at-root {
+      ul#{&},
+      ol#{&} {
+        margin: 0;
+        list-style-type: none;
+
+        li {
+          &.log__player {
+            background-color: rgba($player-color, 0.75);
+          }
+
+          &.log__enemy {
+            background-color: rgba($enemy-color, 0.75);
+          }
+        }
+      }
+    }
+  }
+}

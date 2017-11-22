@@ -1,0 +1,18 @@
+// ===========================================================
+// Buttons
+// ===========================================================
+
+.button {
+  width: 100%;
+  font-weight: bold;
+  outline: none;
+  border: rem-calc(2) solid $button-border;
+
+  &:focus {
+    background-color: $button-background-color;
+  }
+
+  &:active {
+    background-color: $button-background-hover;
+  }
+}
